@@ -26,7 +26,9 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	fmt.Println(<-c) //show why this is needed to 'pause' main routine
+	for i := 0; i < len(links); i++ {
+		fmt.Println(<-c)
+	}
 }
 
 func checkLink(link string, c chan string) {
@@ -39,5 +41,5 @@ func checkLink(link string, c chan string) {
 	}
 
 	fmt.Println(link, "is up :)")
-	c <- "From channel:yes it's up"
+	c <- "From channel: yes it's up"
 }
