@@ -26,8 +26,8 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	for i := 0; i < len(links); i++ {
-		fmt.Println(<-c)
+	for { //infinite loop
+		go checkLink(<-c, c)
 	}
 }
 
@@ -35,11 +35,11 @@ func checkLink(link string, c chan string) {
 	resp, _ := http.Head(link)
 
 	if resp.StatusCode >= 500 {
-		c <- "From channel: might be down"
+		c <- link
 		fmt.Println(link, "might be down :(")
 		return
 	}
 
 	fmt.Println(link, "is up :)")
-	c <- "From channel: yes it's up"
+	c <- link
 }
