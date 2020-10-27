@@ -21,7 +21,7 @@ func main() {
 	}
 
 	for _, link := range links {
-		checkLink(link)
+		go checkLink(link) //show diagram
 	}
 }
 
