@@ -19,3 +19,6 @@ Alternative:
 To validate there's no race conditions:
 
 ` go run -race main.go `
+
+---
+![img](https://github.com/mariaines00/techdonut-website-status-checker/blob/main/386542.png)
